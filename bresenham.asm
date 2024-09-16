@@ -27,26 +27,26 @@ start:
 ;int deltaX = abs(xx2 - xx1);
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 calculate_deltaX:
-    ld HL, (line_x2) ; Load xx2 into register pair HL
-    ld DE, (line_x1) ; Load xx1 into register pair DE
-    or A         ; Clear the carry flag
-    sbc HL, DE   ; Subtract DE from HL with borrow
+    ld HL, (line_x2)    ; Load xx2 into register pair HL
+    ld DE, (line_x1)    ; Load xx1 into register pair DE
+    or A                ; Clear the carry flag
+    sbc HL, DE          ; Subtract DE from HL with borrow
     ;;;;;;
     ;answer in HL
 
     ;now calculate the absolete value
     call absHL
     ;answer in HL
-    ld (deltaX), HL ; Store the result in deltaX
+    ld (deltaX), HL     ; Store the result in deltaX
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;int deltaY = abs(yy2 - yy1);
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-calculate_deltaX:
-    ld HL, (line_y2) ; Load xx2 into register pair HL
-    ld DE, (line_y1) ; Load xx1 into register pair DE
-    or A         ; Clear the carry flag
-    sbc HL, DE   ; Subtract DE from HL with borrow
+calculate_deltaY:
+    ld HL, (line_y2)    ; Load xx2 into register pair HL
+    ld DE, (line_y1)    ; Load xx1 into register pair DE
+    or A                ; Clear the carry flag
+    sbc HL, DE          ; Subtract DE from HL with borrow
     ;;;;;;
     ;answer in HL
 
@@ -65,7 +65,7 @@ calculate_deltaX:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;int stepx = (xx1 < xx2) ? 1 : -1;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-calculate_deltaX_step:
+calculate_deltaX_step:  ; #8020
     or A                ;clear carry flag
 	ld HL, (line_x2)    ; load point X2
     ld DE, (line_x1)    ; load point X1

@@ -42,7 +42,7 @@ end_inital_fraction_calculation2:
 ;;;;;;;;;;;;;;;;;;
 DY_while:					;$920D
 	ld HL, (line_y2)	;grab value of x2
-	ld DE, (gfx_y)		;grab value of X
+	;ld DE, (gfx_y)		;grab value of X
 	sbc HL, DE			;check to see if X == X2
 
 	jp z, end_DY_larger	;check to see if equal
@@ -55,10 +55,10 @@ DY_while:					;$920D
 stepY_func:				;$9219
 
 	ld A, (stepy)
-	ld HL, (gfx_y)
+	;ld HL, (gfx_y)
 	add A, L
 	ld L, A
-	ld (gfx_y), HL
+	;ld (gfx_y), HL
 	;;answer in HL and pass to variable
 
 ;;;;;;;;;;;;;;;;;;
@@ -96,10 +96,10 @@ stepY_DY:					;$9237
 	ld H, $00
 	ld L, A
 
-	ld DE, (gfx_x)
+	;ld DE, (gfx_x)
 
 	add HL, DE				;add Y + stepY
-	ld (gfx_x), HL			;store the answer
+	;ld (gfx_x), HL			;store the answer
 
 ;;;;;;;;;;;;;;;;;;
 	;fraction -= 2 * dy;
@@ -148,13 +148,13 @@ DY_fraction_lesser:		;$9255 will change
 	; loading a 16 bit variable into 8 bits
 	; only because buffer will be 16 bits
 	; for right now nothing over 191
-	ld A, (gfx_y)
+	;ld A, (gfx_y)
 	ld (plot_y), A
 
 	; loading a 16 bit variable into 8 bits
 	; only because buffer will be 16 bits
 	; for right now nothing over 191
-	ld A, (gfx_x)
+	;ld A, (gfx_x)
 	ld (plot_x), A
     ;rtunes_pixel();
 	call _joffa_pixel2
