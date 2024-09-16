@@ -10,7 +10,6 @@ DY_fraction_lesser EQU 09352H
 DY_loop1	EQU 09300H
 DY_while	EQU 09314H
 DYorDY_start	EQU 0804DH
-WTF		EQU 0804AH
 X_PositionBits	EQU 080A5H
 _buffer_address	EQU 09406H
 _buffer_address_calculation3 EQU 09437H
@@ -30,9 +29,9 @@ _screen_addy	EQU 0940BH
 _yesPixelPoint	EQU 09479H
 absHL		EQU 09070H
 calculate_deltaX EQU 08000H
-calculate_deltaX_step EQU 08020H
 calculate_deltaY EQU 08010H
-calculate_deltaY_step EQU 08035H
+calculate_stepX	EQU 08020H
+calculate_stepY	EQU 08035H
 deltaX		EQU 0809CH
 deltaX_iteration EQU 09215H
 deltaX_iteration_end EQU 09274H
@@ -72,6 +71,7 @@ stepY_answer	EQU 08047H
 stepY_equal	EQU 08045H
 stepY_func	EQU 0931CH
 steps		EQU 080A2H
+steps_calc	EQU 0804AH
 steps_calculation EQU 0907AH
 stepx		EQU 080A3H
 stepy		EQU 080A4H

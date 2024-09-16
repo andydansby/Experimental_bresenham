@@ -26,7 +26,7 @@ start:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;int deltaX = abs(xx2 - xx1);
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-calculate_deltaX:
+calculate_deltaX:       ; #8000
     ld HL, (line_x2)    ; Load xx2 into register pair HL
     ld DE, (line_x1)    ; Load xx1 into register pair DE
     or A                ; Clear the carry flag
@@ -42,7 +42,7 @@ calculate_deltaX:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;int deltaY = abs(yy2 - yy1);
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-calculate_deltaY:
+calculate_deltaY:       ; #8010
     ld HL, (line_y2)    ; Load xx2 into register pair HL
     ld DE, (line_y1)    ; Load xx1 into register pair DE
     or A                ; Clear the carry flag
@@ -65,7 +65,7 @@ calculate_deltaY:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;int stepx = (xx1 < xx2) ? 1 : -1;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-calculate_deltaX_step:  ; #8020
+calculate_stepX:        ; #8020
     or A                ;clear carry flag
 	ld HL, (line_x2)    ; load point X2
     ld DE, (line_x1)    ; load point X1
@@ -90,7 +90,7 @@ dx_step_end:
 ;;;;;;;;;;;;
 ;int stepy = (yy1 < yy2) ? 1 : -1;
 ;;;;;;;;;;;;
-calculate_deltaY_step:
+calculate_stepY:        ;#8035
     or a                ;clear carry flag
 	ld HL, (line_y2)    ; load point X2
     ld DE, (line_y1)    ; load point X1
@@ -110,7 +110,7 @@ dy_step_end:
 ; stepy has answer -1 if Y2 is larger
 ; stepy has answer  1 if Y1 is larger or equal
 
-WTF:
+steps_calc:             ;#804A
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;int steps = (deltaX > deltaY) ? deltaX : deltaY;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
