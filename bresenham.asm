@@ -26,6 +26,7 @@ start:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;int deltaX = abs(xx2 - xx1);
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+calculate_deltaX:
     ld HL, (line_x2) ; Load xx2 into register pair HL
     ld DE, (line_x1) ; Load xx1 into register pair DE
     or A         ; Clear the carry flag
@@ -41,7 +42,7 @@ start:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;int deltaY = abs(yy2 - yy1);
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+calculate_deltaX:
     ld HL, (line_y2) ; Load xx2 into register pair HL
     ld DE, (line_y1) ; Load xx1 into register pair DE
     or A         ; Clear the carry flag
@@ -64,7 +65,7 @@ start:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;int stepx = (xx1 < xx2) ? 1 : -1;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-dx_step_start:		;#8020
+calculate_deltaX_step:
     or A                ;clear carry flag
 	ld HL, (line_x2)    ; load point X2
     ld DE, (line_x1)    ; load point X1
@@ -89,7 +90,7 @@ dx_step_end:
 ;;;;;;;;;;;;
 ;int stepy = (yy1 < yy2) ? 1 : -1;
 ;;;;;;;;;;;;
-dy_step_start:
+calculate_deltaY_step:
     or a                ;clear carry flag
 	ld HL, (line_y2)    ; load point X2
     ld DE, (line_y1)    ; load point X1
@@ -134,6 +135,9 @@ DYorDY_start:		;$805D
 	jp z, dyLarger      ;check to see if equal
                         ;if so the DY larger
                         ;$9300
+
+
+
 
 PUBLIC endless
 endless:
