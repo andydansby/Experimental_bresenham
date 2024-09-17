@@ -71,6 +71,7 @@ stepY_answer	EQU 08047H
 stepY_equal	EQU 08045H
 stepY_func	EQU 0931CH
 steps		EQU 080A2H
+steps2_calculation EQU 09097H
 steps_calc	EQU 0804AH
 steps_calculation EQU 0907AH
 stepx		EQU 080A3H

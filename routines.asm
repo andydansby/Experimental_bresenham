@@ -53,7 +53,7 @@ ret
 ;    steps = deltaY;
 ;}
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Assuming deltaX and deltaY are 16-bit values and steps is an 8-bit value
+; Assuming deltaX and deltaY are 16-bit values and steps is an 16-bit value
 steps_calculation:
 
     ld HL, (deltaX)      ; Load deltaX into HL
@@ -76,4 +76,10 @@ set_steps_to_deltaX:
     ld (steps), A
 
 end_steps:
+ret
+
+
+;perform as a max calculation of
+;steps = max (deltaX,deltaY)
+steps2_calculation:
 ret

@@ -46,16 +46,16 @@ PUBLIC deltaY
 
 pixel_sum:	defb 00
 iterations:	defb 00
-steps:      defb 00
+steps:      defb 00     ;$80A2
 
 
 PUBLIC stepx
-stepx:		defb 00		;$80A2
+stepx:		defb 00		;$80A3
 PUBLIC stepy
-stepy:		defb 00		;$80A3
+stepy:		defb 00		;$80A4
 
 
-PUBLIC X_PositionBits	;$80A4
+PUBLIC X_PositionBits	;$80A5
 X_PositionBits:
 defb 128,64,32,16,8,4,2,1
 

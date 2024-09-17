@@ -110,7 +110,7 @@ dy_step_end:
 ; stepy has answer -1 if Y2 is larger
 ; stepy has answer  1 if Y1 is larger or equal
 
-steps_calc:             ;#804A
+steps_calc:              ;#804A
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;int steps = (deltaX > deltaY) ? deltaX : deltaY;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
