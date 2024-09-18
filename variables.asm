@@ -12,25 +12,25 @@ line_y2:	defw 0		;$8086	line end point Y
 
 
 PUBLIC dxABS
-	dxABS:      defw 0000;$808C
+	dxABS:      defw 0000;$8088
 PUBLIC dyABS
-	dyABS:      defw 0000;$808E
+	dyABS:      defw 0000;$808A
 
-x2x1: defw 0000			;$8090
-y2y1: defw 0000			;$8092
+x2x1: defw 0000			;$808C
+y2y1: defw 0000			;$808E
 
-PUBLIC fraction			;$8094
+PUBLIC fraction			;$8090
 fraction:	defw 0000
 
-x1:	defw 0000			;$8094
-x2:	defw 0000			;$8096
-y1:	defw 0000			;$8098
-y2:	defw 0000			;$809A
+x1:	defw 0000			;$8092
+x2:	defw 0000			;$8094
+y1:	defw 0000			;$8096
+y2:	defw 0000			;$8098
 
-PUBLIC plot_x			;$809C
+PUBLIC plot_x			;$809A
 plot_x:		defb 00
 
-PUBLIC plot_y			;$809D
+PUBLIC plot_y			;$809B
 plot_y:		defb 00
 
 
@@ -39,20 +39,21 @@ plot_y:		defb 00
 ; Version 2 Variables
 
 PUBLIC deltaX
-	deltaX:			defw 0000;$8088
+	deltaX:			defw 0000;$809C
 PUBLIC deltaY
-	deltaY:			defw 0000;$808A
+	deltaY:			defw 0000;$809E
 
+PUBLIC steps
+    steps:          defw 0000;$80A0
+
+PUBLIC stepx
+stepx:		defb 00		;$80A2
+PUBLIC stepy
+stepy:		defb 00		;$80A3
 
 pixel_sum:	defb 00
 iterations:	defb 00
-steps:      defb 00     ;$80A2
 
-
-PUBLIC stepx
-stepx:		defb 00		;$80A3
-PUBLIC stepy
-stepy:		defb 00		;$80A4
 
 
 PUBLIC X_PositionBits	;$80A5

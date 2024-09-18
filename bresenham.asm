@@ -114,7 +114,7 @@ steps_calc:              ;#804A
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;int steps = (deltaX > deltaY) ? deltaX : deltaY;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    call steps_calculation
+    call steps2_calculation
 
 
 
