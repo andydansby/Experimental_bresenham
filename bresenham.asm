@@ -34,7 +34,7 @@ calculate_deltaX:       ; #8000
     ;;;;;;
     ;answer in HL
 
-    ;now calculate the absolete value
+    ;now calculate the absolute value
     call absHL
     ;answer in HL
     ld (deltaX), HL     ; Store the result in deltaX
@@ -59,7 +59,7 @@ calculate_deltaY:       ; #8010
 ;jp part1
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;now we are calculating STEPS to determine the direction
+;now we are calculating STEP X & Y to determine the direction
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

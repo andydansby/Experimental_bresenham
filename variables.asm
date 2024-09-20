@@ -5,7 +5,7 @@ org $8080
 line_x1:	defw 0 		;$8080	line start point X
 line_y1:	defw 0 		;$8082	line start point Y
 line_x2:	defw 15  	;$8084	line end point X
-line_y2:	defw 0		;$8086	line end point Y
+line_y2:	defw 1		;$8086	line end point Y
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;dx larger $9200
 ;dy larger $9300
@@ -44,7 +44,10 @@ PUBLIC deltaY
 	deltaY:			defw 0000;$809E
 
 PUBLIC steps
-    steps:          defw 0000;$80A0
+    ;steps:          defw 0000;$80A0
+    steps:          defb 00;$80A0
+
+
 
 PUBLIC stepx
 stepx:		defb 00		;$80A2

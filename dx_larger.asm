@@ -24,16 +24,18 @@ dxLarger:
 
 
 ;for (iterations = 0; iterations <= steps; iterations++)
+    ;initilize iterations loop
     xor A                       ; Clear A (equivalent to ld A, 0)
-    ld (iterations), A
+    ld (iterations), A          ; set iterations to 0
 
+
+;#9215
 deltaX_iteration:
-    ld A, (iterations)
-    ld H, A                     ; Store iterations in H for comparison
-    ld A, (steps)               ; Load steps into A
-    cp H                        ; Compare steps with iterations
-    jr c, DX_iteration_loop     ; Jump to loop body if iterations <= steps
-    jp deltaX_iteration_end     ; Jump to end if iterations > steps
+    ld A, (iterations)          ; this probally can be optimized out
+    ld HL, (steps)              ; Load steps into H
+    cp L                        ; Compare iterations (H) with steps (L)
+    jp z, deltaX_iteration_end  ; If iterations = steps, exit loop
+
 
 
 
@@ -53,9 +55,13 @@ DX_iteration_loop:
     ld (plot_y),A
     call _joffa_pixel2
 
+    ;;;;
+    halt
+    ;;;;
 
 
 
+;#922E
 ;if (fraction >= 0)
     ld HL, (fraction)           ; Load fraction into HL
 
@@ -114,13 +120,13 @@ DX_fraction_negative:
     ld (fraction), HL
 
 
-
+;#9267
 ; iterations++
     ;increase iterations, place just before deltaX_iteration_end
     ld A, (iterations)      ; Load iterations into A
     inc A                   ; Increment iterations
     ld (iterations), A      ; Store the incremented value back to iterations
-    jp DX_iteration_loop    ; Repeat the loop
+    jp deltaX_iteration    ; Repeat the loop
 
 deltaX_iteration_end:
     jp deltaX_iteration_end

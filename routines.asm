@@ -55,7 +55,7 @@ ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Assuming deltaX and deltaY are 16-bit values and steps is an 16-bit value
 ;OBSOLETE
-steps_calculation:
+steps1_calculation:
 
     ld HL, (deltaX)      ; Load deltaX into HL
     ld DE, (deltaY)      ; Load deltaY into DE
