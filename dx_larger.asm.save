@@ -33,7 +33,7 @@ dxLarger:
 deltaX_iteration:
     ld A, (iterations)          ; this probally can be optimized out
     ld HL, (steps)              ; Load steps into H
-    cp L                        ; Compare iterations (A) with steps (L)
+    cp L                        ; Compare iterations (L) with steps (L)
     jp z, deltaX_iteration_end  ; If iterations = steps, exit loop
 
 
@@ -56,19 +56,6 @@ DX_iteration_loop:
     ;;;;
     halt
     ;;;;
-
- ;ATTENTION
- ; PROBLEM
- ;line_x1 and line_y1 are not increasing
-
-
-
-
-
-
-
-
-
 
 ;fraction is 16 bits and can be negative
 ;stepy is 8 bits and can also be negative

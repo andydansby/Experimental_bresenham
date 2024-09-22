@@ -64,7 +64,7 @@ steps2_calculation:
     deltaY_MAX:
     ld HL, (deltaY)
     ld (steps), HL
-
+    
     jp end_steps2
 
     deltaX_MAX:
