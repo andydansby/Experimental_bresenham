@@ -5,7 +5,7 @@ org $8080
 line_x1:	defw 0 		;$8080	line start point X
 line_y1:	defw 0 		;$8082	line start point Y
 line_x2:	defw 15  	;$8084	line end point X
-line_y2:	defw 15		;$8086	line end point Y
+line_y2:	defw 2		;$8086	line end point Y
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;dx larger $9200
 ;dy larger $9300

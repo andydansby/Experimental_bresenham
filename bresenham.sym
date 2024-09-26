@@ -1,7 +1,6 @@
 ATTENTION_temp	EQU 09455H
 DX_fraction_negative EQU 0924CH
 DX_iteration_loop EQU 0921FH
-DY_forever_loop2 EQU 09371H
 DY_fraction_negative EQU 0934CH
 DY_iteration_loop EQU 0931FH
 DYorDY_start	EQU 08053H
@@ -23,6 +22,7 @@ _screen_address	EQU 09409H
 _screen_addy	EQU 0940BH
 _yesPixelPoint	EQU 09479H
 absHL		EQU 09070H
+bresenham_end	EQU 08066H
 calculate_deltaX EQU 08000H
 calculate_deltaY EQU 08010H
 calculate_stepX	EQU 08020H
@@ -41,10 +41,10 @@ dx_step_end	EQU 08035H
 dyABS		EQU 0808AH
 dyLarger	EQU 09300H
 dy_step_end	EQU 0804AH
-end_DY_larger	EQU 09374H
+end_DX_larger	EQU 09271H
+end_DY_larger	EQU 09371H
 end_steps1	EQU 090B5H
 end_steps2	EQU 09098H
-endless		EQU 08066H
 fraction	EQU 08090H
 iterations	EQU 080A4H
 line_x1		EQU 08080H

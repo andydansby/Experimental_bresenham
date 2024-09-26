@@ -150,9 +150,8 @@ DYorDY_start:		;$805D
 
 
 
-PUBLIC endless
-endless:
-jr endless
+PUBLIC bresenham_end
+bresenham_end:
 
 
 

@@ -3,6 +3,14 @@ org $9200
 PUBLIC dxLarger         ;$9200
 dxLarger:
 
+;fraction is 16 bits and can be negative
+;stepy is 8 bits and can also be negative
+;stepx is 8 bits and can also be negative
+;line_y1 is is 16 bits and positive
+;line_x1 is is 16 bits and positive
+;deltaX is 16 bits and also positive
+;deltaY is 16 bits and also positive
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;#9200
 ;fraction = deltaY - (deltaX >> 1);
@@ -52,11 +60,6 @@ DX_iteration_loop:
     call _joffa_pixel2
 
 
-;fraction is 16 bits and can be negative
-;stepy is 8 bits and can also be negative
-;line_y1 is is 16 bits and positive
-;deltaX is 16 bits and also positive
-
 ;#922E
 ;if (fraction >= 0)
     ld HL, (fraction)           ; Load fraction into HL
@@ -90,15 +93,6 @@ DX_iteration_loop:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;outside IF
 
 
-;fraction is 16 bits and can be negative
-;stepy is 8 bits and can also be negative
-;stepx is 8 bits and can also be negative
-;line_y1 is is 16 bits and positive
-;line_x1 is is 16 bits and positive
-;deltaX is 16 bits and also positive
-;deltaY is 16 bits and also positive
-
-
 DX_fraction_negative:   ; #924D
 ; line_x1 += stepx
     xor A           ; set D to 0
@@ -109,13 +103,11 @@ DX_fraction_negative:   ; #924D
     add HL, DE
     ld (line_x1), HL; answer
 
-
 ;fraction += deltaY;    //
     ld HL, (fraction)
     ld DE, (deltaY)
     add HL, DE
     ld (fraction), HL
-
 
 ;#9267
 ; iterations++
@@ -126,11 +118,11 @@ DX_fraction_negative:   ; #924D
     jp deltaX_iteration    ; Repeat the loop
 
 deltaX_iteration_end:
-    jp deltaX_iteration_end
+    jp bresenham_end
 
 
 
-
+end_DX_larger:
 
 ;;;;;;;;;;;;
 ; STOPPED
