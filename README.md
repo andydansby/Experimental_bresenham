@@ -1,4 +1,6 @@
 # Experimental_bresenham
-experimental version of Bresenham written in Z80
 
-trying to create a line routine based on iterations
+Another version of Bresenham written in Z80
+
+This version is based on calculating the max number of iterations
+
