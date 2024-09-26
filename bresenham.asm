@@ -79,8 +79,9 @@ stepX_equal:
     ld A, -1            ; otherwise -1
 
 stepX_answer:
-    ld (stepx), A
-dx_step_end:
+    ld (stepx), A       ;answer in A
+
+dx_step_end:            ;#8032
 
 ;<---------------------
 ; stepx has answer -1 if X2 is larger
@@ -105,16 +106,26 @@ stepY_equal:
 
 stepY_answer:
     ld (stepy), A
-dy_step_end:
+
+dy_step_end:            ;#8047
 ;<---------------------
 ; stepy has answer -1 if Y2 is larger
 ; stepy has answer  1 if Y1 is larger or equal
+
+tester1:
+ld A, (stepx)
+
 
 steps_calc:              ;#804A
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;int steps = (deltaX > deltaY) ? deltaX : deltaY;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     call steps2_calculation
+
+
+tester2:
+ld A, (stepx)
+
 
 
 

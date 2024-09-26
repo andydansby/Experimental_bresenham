@@ -62,19 +62,26 @@ steps2_calculation:
 
     ; Else, set steps to deltaY
     deltaY_MAX:
+    ;ld HL, (deltaY)
+    ;ld (steps), HL
     ld HL, (deltaY)
-    ld (steps), HL
+    ld A, L
+    ld (steps), A
 
     jp end_steps2
 
     deltaX_MAX:
+    ;ld HL, (deltaX)
+    ;ld (steps), HL
     ld HL, (deltaX)
-    ld (steps), HL
+    ld A, L
+    ld (steps), A
 
 end_steps2:
 ret
 
-
+;stepy
+;stepx
 
 ;calculate Steps
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

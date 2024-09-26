@@ -1,7 +1,5 @@
 org $9200
 
-;if (deltaX > deltaY)
-
 PUBLIC dxLarger         ;$9200
 dxLarger:
 
@@ -54,7 +52,7 @@ DX_iteration_loop:
     call _joffa_pixel2
 
     ;;;;
-    halt
+    ;halt
     ;;;;
 
  ;ATTENTION
@@ -91,6 +89,10 @@ DX_iteration_loop:
     sbc HL, DE
     ld (fraction), HL
 
+
+;stepy
+;stepx problem?
+
 ;line_y1 += stepy;
     ld a, (stepy)
     ld hl, (line_y1) ; Load line_y1 into HL
@@ -104,7 +106,7 @@ DX_iteration_loop:
     ld (line_y1), hl    ;save answer
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;inside IF
 
-;if fracktion is less than 0
+;if fraction is less than 0
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;outside IF
 
 
@@ -120,8 +122,11 @@ DX_iteration_loop:
 ;deltaX is 16 bits and also positive
 ;deltaY is 16 bits and also positive
 
+;stepy
+;stepx problem?
 
-DX_fraction_negative:
+
+DX_fraction_negative:   ; #924D
 ; line_x1 += stepx
     xor A           ; set D to 0
     ld D, A

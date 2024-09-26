@@ -1,5 +1,5 @@
 ATTENTION_temp	EQU 09455H
-DX_fraction_negative EQU 0924DH
+DX_fraction_negative EQU 0924CH
 DX_iteration_loop EQU 0921FH
 DY_forever_loop2 EQU 0936AH
 DY_fraction	EQU 0933EH
@@ -9,7 +9,7 @@ DY_fraction_greater EQU 09337H
 DY_fraction_lesser EQU 09352H
 DY_loop1	EQU 09300H
 DY_while	EQU 09314H
-DYorDY_start	EQU 0804DH
+DYorDY_start	EQU 08053H
 X_PositionBits	EQU 080A5H
 _buffer_address	EQU 09406H
 _buffer_address_calculation3 EQU 09437H
@@ -33,9 +33,9 @@ calculate_deltaY EQU 08010H
 calculate_stepX	EQU 08020H
 calculate_stepY	EQU 08035H
 deltaX		EQU 0809CH
-deltaX_MAX	EQU 09090H
+deltaX_MAX	EQU 09091H
 deltaX_iteration EQU 09215H
-deltaX_iteration_end EQU 0926FH
+deltaX_iteration_end EQU 0926EH
 deltaY		EQU 0809EH
 deltaY_MAX	EQU 09087H
 dxABS		EQU 08088H
@@ -47,9 +47,9 @@ dy_step_end	EQU 0804AH
 end_DY_fraction	EQU 0934FH
 end_DY_larger	EQU 0936DH
 end_inital_fraction_calculation2 EQU 09314H
-end_steps1	EQU 090B3H
-end_steps2	EQU 09096H
-endless		EQU 08060H
+end_steps1	EQU 090B5H
+end_steps2	EQU 09098H
+endless		EQU 08066H
 endless_loop2	EQU 09311H
 forever_loop	EQU 0936DH
 fraction	EQU 08090H
@@ -65,7 +65,7 @@ plot_x		EQU 0809AH
 plot_y		EQU 0809BH
 positiveDX	EQU 09068H
 positiveDY	EQU 09058H
-set_steps_to_deltaX EQU 090ADH
+set_steps_to_deltaX EQU 090AFH
 start		EQU 08000H
 stepX_answer	EQU 08032H
 stepX_equal	EQU 08030H
@@ -74,11 +74,13 @@ stepY_answer	EQU 08047H
 stepY_equal	EQU 08045H
 stepY_func	EQU 0931CH
 steps		EQU 080A0H
-steps1_calculation EQU 09097H
+steps1_calculation EQU 09099H
 steps2_calculation EQU 0907AH
-steps_calc	EQU 0804AH
+steps_calc	EQU 0804DH
 stepx		EQU 080A1H
 stepy		EQU 080A2H
+tester1		EQU 0804AH
+tester2		EQU 08050H
 x1		EQU 08092H
 x2		EQU 08094H
 x2x1		EQU 0808CH
