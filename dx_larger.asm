@@ -51,22 +51,6 @@ DX_iteration_loop:
     ld (plot_y),A
     call _joffa_pixel2
 
-    ;;;;
-    ;halt
-    ;;;;
-
- ;ATTENTION
- ; PROBLEM
- ;line_x1 and line_y1 are not increasing
-
-
-
-
-
-
-
-
-
 
 ;fraction is 16 bits and can be negative
 ;stepy is 8 bits and can also be negative
@@ -81,17 +65,13 @@ DX_iteration_loop:
     or L
     jp m, DX_fraction_negative  ;check Sign flag
 
-; only is fraction is Greater than 0
+; only if fraction is Greater than 0
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;inside IF
 ; fraction -= deltaX
+    ;fraction is already in HL
     ld DE, (deltaX)
-    ;ld HL, (fraction)      ;fraction is already in HL
     sbc HL, DE
     ld (fraction), HL
-
-
-;stepy
-;stepx problem?
 
 ;line_y1 += stepy;
     ld a, (stepy)
@@ -110,10 +90,6 @@ DX_iteration_loop:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;outside IF
 
 
-
-
-
-
 ;fraction is 16 bits and can be negative
 ;stepy is 8 bits and can also be negative
 ;stepx is 8 bits and can also be negative
@@ -121,9 +97,6 @@ DX_iteration_loop:
 ;line_x1 is is 16 bits and positive
 ;deltaX is 16 bits and also positive
 ;deltaY is 16 bits and also positive
-
-;stepy
-;stepx problem?
 
 
 DX_fraction_negative:   ; #924D
