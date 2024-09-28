@@ -10,7 +10,6 @@ void bresenham(int line_x1, int line_y1, int line_x2, int line_y2)
     int deltaY;
     int fraction;
     int steps;
-    //int pixel_sum = 0;
     int iterations = 0;
 
     deltaX = Math.Abs(line_x2 - line_x1);       //deltaX = Math.Abs(delta_x1);
@@ -24,9 +23,6 @@ void bresenham(int line_x1, int line_y1, int line_x2, int line_y2)
         steps = deltaX;
     else
         steps = deltaY;
-
-    //pixel_sum = Math.Max(deltaX, deltaY);
-
 
     //plot starting point
     //buffer_plotX = line_x1;
