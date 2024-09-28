@@ -53,8 +53,8 @@ _buffer_plot:
 	ld DE, (_buffer_plotY)   ;uses DE
     ld BC, (_buffer_plotX)   ;using C only
 	;ok
-	
-	
+
+
 	call _calculate_char_X_space1
 	call _buffer_address_calculation3
 
@@ -161,26 +161,17 @@ _buffer_address_calculation3:
         ;now put in range
     ;ld BC, $C000
 	ld BC, (_screen_address)
-	
+
     add HL, BC
     ;finished product is in HL
 
  ATTENTION_temp:
     ld (_screen_addy), HL
-	
+
 
     pop DE                      ; restore de
     pop BC                      ; restore bc
 ret
-
-
-
-
-
-
-
-
-
 
 
 PUBLIC _buffer_point

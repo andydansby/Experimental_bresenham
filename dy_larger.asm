@@ -1,18 +1,8 @@
 org $9300
 
-PUBLIC dyLarger         ;$9300
+PUBLIC dyLarger
 dyLarger:
 
-;fraction is 16 bits and can be negative
-;stepy is 8 bits and can also be negative
-;stepx is 8 bits and can also be negative
-;line_y1 is is 16 bits and positive
-;line_x1 is is 16 bits and positive
-;deltaX is 16 bits and also positive
-;deltaY is 16 bits and also positive
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;#9300
 ;fraction = deltaX - (deltaY >> 1);
     ld HL, (deltaX)
     ld DE, (deltaY)
@@ -35,16 +25,12 @@ dyLarger:
     ld (iterations), A          ; set iterations to 0
 
 
-;#9315
 deltaY_iteration:
-    ld A, (iterations)          ; this probally can be optimized out
+    ;ld A, (iterations)          ; this probally can be optimized out
     ld HL, (steps)              ; Load steps into H
     cp L                        ; Compare iterations (A) with steps (L)
     jp z, deltaY_iteration_end  ; If iterations = steps, exit loop
 
-
-
-;#931F
 DY_iteration_loop:
     ; Code for the loop body goes here
 
@@ -59,8 +45,6 @@ DY_iteration_loop:
     ld (plot_y),A
     call _joffa_pixel2
 
-
-;#932E
 ;if (fraction >= 0)
     ld HL, (fraction)           ; Load fraction into HL
     ; check to see if fraction is less than 0
@@ -91,8 +75,6 @@ DY_iteration_loop:
 
 ;if fraction is less than 0
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;outside IF
-
-
 DY_fraction_negative:   ; #934D
 ; line_y1 += stepy;
     xor A           ; set D to 0
@@ -109,7 +91,6 @@ DY_fraction_negative:   ; #934D
     add HL, DE
     ld (fraction), HL
 
-;#9367
 ; iterations++
     ;increase iterations, place just before deltaX_iteration_end
     ld A, (iterations)      ; Load iterations into A
@@ -120,6 +101,4 @@ DY_fraction_negative:   ; #934D
 deltaY_iteration_end:
     jp bresenham_end
 
-
 end_DY_larger:
-

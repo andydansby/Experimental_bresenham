@@ -1,18 +1,8 @@
 org $9200
 
-PUBLIC dxLarger         ;$9200
+PUBLIC dxLarger
 dxLarger:
 
-;fraction is 16 bits and can be negative
-;stepy is 8 bits and can also be negative
-;stepx is 8 bits and can also be negative
-;line_y1 is is 16 bits and positive
-;line_x1 is is 16 bits and positive
-;deltaX is 16 bits and also positive
-;deltaY is 16 bits and also positive
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;#9200
 ;fraction = deltaY - (deltaX >> 1);
     ld HL, (deltaY)
     ld DE, (deltaX)
@@ -35,16 +25,12 @@ dxLarger:
     ld (iterations), A          ; set iterations to 0
 
 
-;#9215
 deltaX_iteration:
-    ld A, (iterations)          ; this probally can be optimized out
+    ;ld A, (iterations)         ; this probally can be optimized out
     ld HL, (steps)              ; Load steps into H
     cp L                        ; Compare iterations (A) with steps (L)
     jp z, deltaX_iteration_end  ; If iterations = steps, exit loop
 
-
-
-;#921F
 DX_iteration_loop:
     ; Code for the loop body goes here
 
@@ -59,8 +45,6 @@ DX_iteration_loop:
     ld (plot_y),A
     call _joffa_pixel2
 
-
-;#922E
 ;if (fraction >= 0)
     ld HL, (fraction)           ; Load fraction into HL
     ; check to see if fraction is less than 0
@@ -91,9 +75,7 @@ DX_iteration_loop:
 
 ;if fraction is less than 0
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;outside IF
-
-
-DX_fraction_negative:   ; #924D
+DX_fraction_negative:
 ; line_x1 += stepx
     xor A           ; set D to 0
     ld D, A
@@ -103,13 +85,12 @@ DX_fraction_negative:   ; #924D
     add HL, DE
     ld (line_x1), HL; answer
 
-;fraction += deltaY;    //
+;fraction += deltaY;
     ld HL, (fraction)
     ld DE, (deltaY)
     add HL, DE
     ld (fraction), HL
 
-;#9267
 ; iterations++
     ;increase iterations, place just before deltaX_iteration_end
     ld A, (iterations)      ; Load iterations into A
@@ -120,11 +101,4 @@ DX_fraction_negative:   ; #924D
 deltaX_iteration_end:
     jp bresenham_end
 
-
-
 end_DX_larger:
-
-;;;;;;;;;;;;
-; STOPPED
-;;;;;;;;;;;;
-
