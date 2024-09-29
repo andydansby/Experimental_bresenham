@@ -4,12 +4,18 @@ PUBLIC dyLarger
 dyLarger:
 
 ;fraction = deltaX - (deltaY >> 1);
-    ld HL, (deltaX)
-    ld DE, (deltaY)
+    ld HL, (deltaY)
 
     ; Right shift deltaX by 1 (equivalent to dividing by 2)
-    srl D                       ; Shift the high byte right
-    rr E                        ; Rotate right through carry the low byte
+    srl H                       ; Shift the high byte right
+    rr L                        ; Rotate right through carry the low byte
+
+    ; Store shifted deltaY in DE for subtraction
+    ld D, H
+    ld E, L
+
+    ; Load deltaX into HL
+    ld HL, (deltaX)
 
     ; Subtract (deltaX >> 1) from deltaY
     or A                        ; Clear the carry flag
@@ -48,8 +54,9 @@ DY_iteration_loop:
 ;if (fraction >= 0)
     ld HL, (fraction)           ; Load fraction into HL
     ; check to see if fraction is less than 0
-    ld A, H
-    or L
+    ;ld A, H
+    ;or L
+    bit 7, H
     jp m, DY_fraction_negative  ;check Sign flag
 
 ; only if fraction is Greater than 0
@@ -60,12 +67,12 @@ DY_iteration_loop:
     sbc HL, DE
     ld (fraction), HL
 
-;line_x1 += stepx;
-    ld a, (stepx)
+;line_x1 += stepX;
+    ld a, (stepX)
     ld hl, (line_x1) ; Load line_y1 into HL
 
-    ; Load stepy into E and clear D
-    ld e, a          ; Load stepy into E
+    ; Load stepY into E and clear D
+    ld e, a          ; Load stepY into E
     xor a            ; clear D
     ld d, a          ;
 
@@ -76,10 +83,10 @@ DY_iteration_loop:
 ;if fraction is less than 0
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;outside IF
 DY_fraction_negative:   ; #934D
-; line_y1 += stepy;
+; line_y1 += stepY;
     xor A           ; set D to 0
     ld D, A
-    ld A, (stepy)   ; Load stepx into E
+    ld A, (stepY)   ; Load stepY into E
     ld E, A
     ld HL, (line_y1); Load line_x1 into HL
     add HL, DE

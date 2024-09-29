@@ -3,13 +3,21 @@ org $9200
 PUBLIC dxLarger
 dxLarger:
 
+;fraction = deltaY - (deltaX / 2);
 ;fraction = deltaY - (deltaX >> 1);
-    ld HL, (deltaY)
-    ld DE, (deltaX)
+    ld HL, (deltaX)
 
-    ; Right shift deltaX by 1 (equivalent to dividing by 2)
-    srl D                       ; Shift the high byte right
-    rr E                        ; Rotate right through carry the low byte
+
+    ; Shift deltaX right by 1 (HL >> 1)
+    srl H         ; Shift high byte to the right
+    rr L          ; Rotate right through carry into low byte
+
+    ; Store shifted deltaX in DE for subtraction
+    ld D, H
+    ld E, L
+
+    ; Load deltaY into HL
+    ld HL, (deltaY)
 
     ; Subtract (deltaX >> 1) from deltaY
     or A                        ; Clear the carry flag
@@ -48,8 +56,9 @@ DX_iteration_loop:
 ;if (fraction >= 0)
     ld HL, (fraction)           ; Load fraction into HL
     ; check to see if fraction is less than 0
-    ld A, H
-    or L
+    ;ld A, H
+    ;or L
+    bit 7, H
     jp m, DX_fraction_negative  ;check Sign flag
 
 ; only if fraction is Greater than 0
@@ -57,15 +66,16 @@ DX_iteration_loop:
 ; fraction -= deltaX
     ;fraction is already in HL
     ld DE, (deltaX)
+    xor A
     sbc HL, DE
     ld (fraction), HL
 
-;line_y1 += stepy;
-    ld a, (stepy)
+;line_y1 += stepY;
+    ld a, (stepY)
     ld hl, (line_y1) ; Load line_y1 into HL
 
-    ; Load stepy into E and clear D
-    ld e, a          ; Load stepy into E
+    ; Load stepY into E and clear D
+    ld e, a          ; Load stepY into E
     xor a            ; clear D
     ld d, a          ;
 
@@ -76,10 +86,10 @@ DX_iteration_loop:
 ;if fraction is less than 0
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;outside IF
 DX_fraction_negative:
-; line_x1 += stepx
+; line_x1 += stepX
     xor A           ; set D to 0
     ld D, A
-    ld A, (stepx)   ; Load stepx into E
+    ld A, (stepX)   ; Load stepX into E
     ld E, A
     ld HL, (line_x1); Load line_x1 into HL
     add HL, DE

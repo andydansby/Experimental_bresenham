@@ -3,9 +3,9 @@ org $8080
 ;input variables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 line_x1:	defw 0 		;$8080	line start point X
-line_y1:	defw 5 		;$8082	line start point Y
-line_x2:	defw 5  	;$8084	line end point X
-line_y2:	defw 0		;$8086	line end point Y
+line_y1:	defw 0 		;$8082	line start point Y
+line_x2:	defw 228  	;$8084	line end point X
+line_y2:	defw 191  	;$8086	line end point Y
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -15,10 +15,10 @@ PUBLIC deltaX
 PUBLIC deltaY
 	deltaY:			defw 0000   ;$
 
-PUBLIC stepx
-    stepx:		defb 00         ;$
-PUBLIC stepy
-    stepy:		defb 00		    ;$
+PUBLIC stepX
+    stepX:		defb 00         ;$
+PUBLIC stepY
+    stepY:		defb 00		    ;$
 PUBLIC steps
     steps:      defb 00         ;$
 
