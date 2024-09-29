@@ -7,14 +7,15 @@ dxLarger:
 ;fraction = deltaY - (deltaX >> 1);
     ld HL, (deltaX)
 
-
     ; Shift deltaX right by 1 (HL >> 1)
     srl H         ; Shift high byte to the right
     rr L          ; Rotate right through carry into low byte
 
     ; Store shifted deltaX in DE for subtraction
-    ld D, H
-    ld E, L
+    ;optimize out the next two steps
+    ;ld D, H
+    ;ld E, L
+    ex de, hl
 
     ; Load deltaY into HL
     ld HL, (deltaY)

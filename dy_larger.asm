@@ -11,8 +11,10 @@ dyLarger:
     rr L                        ; Rotate right through carry the low byte
 
     ; Store shifted deltaY in DE for subtraction
-    ld D, H
-    ld E, L
+    ;optimize out the next two steps
+    ;ld D, H
+    ;ld E, L
+    ex de, hl
 
     ; Load deltaX into HL
     ld HL, (deltaX)

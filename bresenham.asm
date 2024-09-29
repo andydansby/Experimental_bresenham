@@ -59,7 +59,7 @@ calculate_deltaY:       ; #8010
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;int stepx = (xx1 < xx2) ? 1 : -1;
+;int stepX = (xx1 < xx2) ? 1 : -1;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 calculate_stepX:
     or A                ;clear carry flag
@@ -75,17 +75,17 @@ stepX_equal:
     ld A, -1            ; otherwise -1
 
 stepX_answer:
-    ld (stepx), A       ;answer in A
+    ld (stepX), A       ;answer in A
 
 dx_step_end:
 
 ;<---------------------
-; stepx has answer -1 if X2 is larger
-; stepx has answer  1 if X1 is larger or equal
+; stepX has answer -1 if X2 is larger
+; stepX has answer  1 if X1 is larger or equal
 
 
 ;;;;;;;;;;;;
-;int stepy = (yy1 < yy2) ? 1 : -1;
+;int stepY = (yy1 < yy2) ? 1 : -1;
 ;;;;;;;;;;;;
 calculate_stepY:
     or a                ;clear carry flag
@@ -101,12 +101,12 @@ stepY_equal:
     ld A, -1            ; otherwise -1
 
 stepY_answer:
-    ld (stepy), A
+    ld (stepY), A
 
 dy_step_end:
 ;<---------------------
-; stepy has answer -1 if Y2 is larger
-; stepy has answer  1 if Y1 is larger or equal
+; stepY has answer -1 if Y2 is larger
+; stepY has answer  1 if Y1 is larger or equal
 
 
 steps_calc:
@@ -123,14 +123,19 @@ steps_calc:
 
     ; Else, set steps to deltaY
 deltaY_MAX:
-    ld HL, (deltaY)
-    ld A, L
+    ;;optimize out the next two steps
+    ;ld HL, (deltaY)
+    ;ld A, L
+    ld A, (deltaY)
     ld (steps), A
+
     jp end_steps_calc
 
 deltaX_MAX:
-    ld HL, (deltaX)
-    ld A, L
+    ;;optimize out the next two steps
+    ;ld HL, (deltaX)
+    ;ld A, L
+    ld a, (deltaX)
     ld (steps), A
 
 end_steps_calc:

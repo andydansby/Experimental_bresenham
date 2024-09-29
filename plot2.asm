@@ -15,7 +15,7 @@ _joffa_pixel2:
 	ld D, A
 
 ; Calculate screen address
-    ld A, D
+    ;ld A, D    ;optimize out the next step
     rrca
     rrca
     rrca            ; A = Y / 8 (divide Y by 8)
